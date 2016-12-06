@@ -29,12 +29,22 @@ def print(students)
   end
 end
 
+def select(students)
+  puts "Please enter the first letter of the student's name:"
+  letter = gets.chomp.upcase
+  select_students = students.select { |student| student[:name][0] == letter }
+  select_students.each_with_index do |student, i|
+    puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+  end
+end
+
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 
 students = input_students
 print_header
+select(students)
 print(students)
 print_footer(students)
 
