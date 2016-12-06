@@ -38,14 +38,22 @@ def select(students)
   end
 end
 
+def short_name(students)
+    short = students.select { |student| student[:name].length < 12 }
+    short.each_with_index do |student, i|
+      puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    end
+  end
+
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 
 students = input_students
 print_header
-select(students)
 print(students)
+select(students)
+short_name(students)
 print_footer(students)
 
 # students = [
